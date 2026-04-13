@@ -1,37 +1,73 @@
-<!-- TOP RIGHT BUTTON -->
-<div class="top-bar">
-  <button class="report-btn" (click)="openForm()">+ Report</button>
-</div>
+<div class="page">
 
-<!-- SEARCH CENTER -->
-<div class="search-box">
-  <input
-    type="text"
-    placeholder="Search people..."
-    (input)="search($event)"
-  />
-</div>
-
-<!-- RESULTS -->
-<div class="results">
-  <div *ngFor="let r of results()">
-    {{ r.firstName }} {{ r.lastName }} - {{ r.category }}
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <button class="report-btn" (click)="openForm()">
+      + Report
+    </button>
   </div>
+
+  <!-- SEARCH CENTER -->
+  <div class="search-wrapper">
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Search people, category..."
+        (input)="search($event)"
+      />
+      <span class="icon">🔍</span>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results">
+    <div class="card" *ngFor="let r of results()">
+      <div class="name">
+        {{ r.firstName }} {{ r.lastName }}
+      </div>
+      <div class="meta">
+        <span>🌍 {{ r.nationality }}</span>
+        <span>💼 {{ r.job }}</span>
+      </div>
+      <div class="tag">
+        {{ r.category }}
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- MODAL -->
+<div class="overlay" *ngIf="showForm()" (click)="closeForm()"></div>
+
 <div class="modal" *ngIf="showForm()">
-  <div class="modal-content">
-    <h2>Report</h2>
 
-    <input [(ngModel)]="form.firstName" placeholder="First (1 letter)" />
-    <input [(ngModel)]="form.lastName" placeholder="Last (1 letter)" />
-    <input [(ngModel)]="form.nationality" placeholder="Nationality" />
-    <input type="date" [(ngModel)]="form.birthDate" />
-    <input [(ngModel)]="form.job" placeholder="Job" />
-    <input [(ngModel)]="form.category" placeholder="Category" />
-
-    <button (click)="submit()">Submit</button>
-    <button (click)="closeForm()">Close</button>
+  <div class="modal-header">
+    <h2>Report Person</h2>
+    <p>Fill in information below</p>
   </div>
+
+  <div class="modal-body">
+
+    <div class="grid">
+      <input [(ngModel)]="form.firstName" placeholder="First Name (1 letter)" />
+      <input [(ngModel)]="form.lastName" placeholder="Last Name (1 letter)" />
+    </div>
+
+    <input [(ngModel)]="form.nationality" placeholder="Nationality" />
+
+    <div class="grid">
+      <input type="date" [(ngModel)]="form.birthDate" />
+      <input [(ngModel)]="form.job" placeholder="Job" />
+    </div>
+
+    <input [(ngModel)]="form.category" placeholder="Category (e.g cheating, flirting)" />
+
+  </div>
+
+  <div class="modal-footer">
+    <button class="cancel" (click)="closeForm()">Cancel</button>
+    <button class="submit" (click)="submit()">Submit</button>
+  </div>
+
 </div>
