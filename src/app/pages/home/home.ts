@@ -26,6 +26,19 @@ export class Home {
     category: ''
   };
 
+  countries: string[] = [
+  'France',
+  'USA',
+  'UK',
+  'Germany',
+  'Spain',
+  'Italy',
+  'Vietnam',
+  'Japan',
+  'China',
+  'Korea'
+];
+
   constructor(private api: Api) {}
 
   /*

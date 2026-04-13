@@ -54,7 +54,13 @@
       <input [(ngModel)]="form.lastName" placeholder="Last Name (1 letter)" />
     </div>
 
-    <input [(ngModel)]="form.nationality" placeholder="Nationality" />
+    <select [(ngModel)]="form.nationality">
+  <option value="" disabled selected>Select nationality</option>
+
+  <option *ngFor="let c of countries" [value]="c">
+    {{ c }}
+  </option>
+</select>
 
     <div class="grid">
       <input type="date" [(ngModel)]="form.birthDate" />
