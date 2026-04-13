@@ -146,6 +146,16 @@
   outline: none;
 }
 
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  background: white;
+  font-size: 14px;
+}
+
 .grid {
   display: flex;
   gap: 10px;

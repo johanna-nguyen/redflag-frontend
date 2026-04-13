@@ -55,12 +55,12 @@
     </div>
 
     <select [(ngModel)]="form.nationality">
-  <option value="" disabled selected>Select nationality</option>
+      <option value="" disabled selected>Select nationality</option>
 
-  <option *ngFor="let c of countries" [value]="c">
-    {{ c }}
-  </option>
-</select>
+      <option *ngFor="let c of countries" [value]="c">
+        {{ c }}
+      </option>
+    </select>
 
     <div class="grid">
       <input type="date" [(ngModel)]="form.birthDate" />
