@@ -71,7 +71,7 @@
     </div>
 
     <!-- Dropdown for job -->
-    <select [(ngModel)]="form.jobFields">
+    <select [(ngModel)]="form.job">
       <option value="" disabled selected>Select job field</option>
 
       <option *ngFor="let j of jobFields" [value]="j">
@@ -80,7 +80,7 @@
     </select>
 
     <!-- Dropdown for behavior type -->
-    <div *ngFor="let b of behaviorTypes">
+    <div *ngFor="let b of behavior">
   <label>
     <input
       type="checkbox"
