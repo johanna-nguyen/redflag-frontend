@@ -49,11 +49,14 @@
 
   <div class="modal-body">
 
+
+    <!-- Using grid layout for first and last name -->
     <div class="grid">
       <input [(ngModel)]="form.firstName" placeholder="First Name (1 letter)" />
       <input [(ngModel)]="form.lastName" placeholder="Last Name (1 letter)" />
     </div>
 
+    <!-- Dropdown for nationality -->
     <select [(ngModel)]="form.nationality">
       <option value="" disabled selected>Select nationality</option>
 
@@ -62,12 +65,30 @@
       </option>
     </select>
 
+    <!-- Date picker for birth date -->
     <div class="grid">
       <input type="date" [(ngModel)]="form.birthDate" />
-      <input [(ngModel)]="form.job" placeholder="Job" />
     </div>
 
-    <input [(ngModel)]="form.category" placeholder="Category (e.g cheating, flirting)" />
+    <!-- Dropdown for job -->
+    <select [(ngModel)]="form.jobFields">
+      <option value="" disabled selected>Select job field</option>
+
+      <option *ngFor="let j of jobFields" [value]="j">
+        {{ j }}
+      </option>
+    </select>
+
+    <!-- Dropdown for behavior type -->
+    <select multiple [(ngModel)]="form.behaviorTypes">
+      <option value="" disabled selected>Select behavior type</option>
+
+      <option *ngFor="let b of behaviorTypes" [value]="b">
+        {{ b }}
+      </option>
+    </select>
+
+    
 
   </div>
 

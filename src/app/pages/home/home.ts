@@ -22,8 +22,8 @@ export class Home {
     lastName: '',
     nationality: '',
     birthDate: '',
-    job: '',
-    category: ''
+    jobFields: '',
+    behaviorTypes: [] as string[]
   };
 
   countries: string[] = [
@@ -37,6 +37,66 @@ export class Home {
   'Japan',
   'China',
   'Korea'
+];
+  jobFields: string[] = [
+  'Technology',
+  'Software Engineering',
+  'Data Science',
+  'Artificial Intelligence',
+  'Cyber Security',
+  'Finance',
+  'Banking',
+  'Accounting',
+  'Marketing',
+  'Sales',
+  'Human Resources',
+  'Education',
+  'Healthcare',
+  'Medicine',
+  'Pharmaceutical',
+  'Legal',
+  'Government',
+  'Military',
+  'Construction',
+  'Architecture',
+  'Design',
+  'Media & Communication',
+  'Journalism',
+  'Entertainment',
+  'Hospitality',
+  'Tourism',
+  'Logistics',
+  'Manufacturing',
+  'Retail',
+  'E-commerce',
+  'Research & Development',
+  'Agriculture',
+  'Energy',
+  'Consulting',
+  'Other'
+];
+
+behaviorTypes: string[] = [
+  'Flirting',
+  'Cheating',
+  'Narcissism',
+  'Manipulation',
+  'Lying',
+  'Gaslighting',
+  'Emotional Abuse',
+  'Verbal Abuse',
+  'Controlling Behavior',
+  'Jealousy Issues',
+  'Infidelity Patterns',
+  'Love Bombing',
+  'Ghosting',
+  'Disrespectful Behavior',
+  'Aggressive Behavior',
+  'Harassment',
+  'Stalking',
+  'Self-centered Behavior',
+  'Dishonesty',
+  'Other'
 ];
 
   constructor(private api: Api) {}
