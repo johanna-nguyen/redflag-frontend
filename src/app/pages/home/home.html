@@ -1,0 +1,38 @@
+<h1>HOME COMPONENT LOADED</h1>
+<!-- TOP RIGHT BUTTON -->
+<div class="top-bar">
+  <button class="report-btn" (click)="openForm()">+ Report</button>
+</div>
+
+<!-- SEARCH CENTER -->
+<div class="search-box">
+  <input
+    type="text"
+    placeholder="Search people..."
+    (input)="search($event)"
+  />
+</div>
+
+<!-- RESULTS -->
+<div class="results">
+  <div *ngFor="let r of results()">
+    {{ r.firstName }} {{ r.lastName }} - {{ r.category }}
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" *ngIf="showForm()">
+  <div class="modal-content">
+    <h2>Report</h2>
+
+    <input [(ngModel)]="form.firstName" placeholder="First (1 letter)" />
+    <input [(ngModel)]="form.lastName" placeholder="Last (1 letter)" />
+    <input [(ngModel)]="form.nationality" placeholder="Nationality" />
+    <input type="date" [(ngModel)]="form.birthDate" />
+    <input [(ngModel)]="form.job" placeholder="Job" />
+    <input [(ngModel)]="form.category" placeholder="Category" />
+
+    <button (click)="submit()">Submit</button>
+    <button (click)="closeForm()">Close</button>
+  </div>
+</div>
