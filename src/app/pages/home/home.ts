@@ -11,7 +11,7 @@ import { OnInit } from '@angular/core';
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
 })
-export class Home  implements OnInit {
+export class Home {
 
 
   showForm = signal(false);
@@ -28,13 +28,15 @@ export class Home  implements OnInit {
 
   constructor(private api: Api) {}
 
+  /*
+
   ngOnInit() {
     this.api.getAll().subscribe((data: any) => {
       console.log("DATA:", data); // data trả về từ API
       this.results.set(data);
     });
   }
-
+*/
   openForm() {
     this.showForm.set(true);
   }
