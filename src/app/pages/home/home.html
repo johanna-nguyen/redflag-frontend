@@ -80,13 +80,16 @@
     </select>
 
     <!-- Dropdown for behavior type -->
-    <select multiple [(ngModel)]="form.behaviorTypes">
-      <option value="" disabled selected>Select behavior type</option>
-
-      <option *ngFor="let b of behaviorTypes" [value]="b">
-        {{ b }}
-      </option>
-    </select>
+    <div *ngFor="let b of behaviorTypes">
+  <label>
+    <input
+      type="checkbox"
+      [value]="b"
+      (change)="toggleBehavior(b, $event)"
+    />
+    {{ b }}
+  </label>
+</div>
 
     
 

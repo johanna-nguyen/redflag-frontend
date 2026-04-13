@@ -110,6 +110,15 @@ behaviorTypes: string[] = [
     });
   }
 */
+
+toggleBehavior(value: string, event: any) {
+  if (event.target.checked) {
+    this.form.behaviorTypes.push(value);
+  } else {
+    this.form.behaviorTypes =
+      this.form.behaviorTypes.filter(b => b !== value);
+  }
+}
   openForm() {
     this.showForm.set(true);
   }
