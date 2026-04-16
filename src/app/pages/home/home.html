@@ -12,12 +12,18 @@
     <div class="search-box">
       <input
         type="text"
-        placeholder="Search people, category..."
-        (input)="search($event)"
+         [(ngModel)]="searchText"
+        placeholder="Search people..."
+        (keydown.enter)="onSearch()"
       />
-      <span class="icon">🔍</span>
+      <span class="material-icons icon">search</span>
+    </div>
+    <div class="search-message" *ngIf="searchMessage" [ngClass]="messageType">
+      {{ searchMessage }}
     </div>
   </div>
+
+      
 
   <!-- RESULTS -->
   <div class="results">
@@ -26,12 +32,15 @@
         {{ r.firstName }} {{ r.lastName }}
       </div>
       <div class="meta">
-        <span>🌍 {{ r.nationality }}</span>
-        <span>💼 {{ r.job }}</span>
+        <span class="material-icons icon">place</span>{{ r.nationality }}
+        <span class="material-icons icon">cake</span> {{ r.birthDate | date:'yyyy-MM-dd' }}
+        <span class="material-icons icon">work</span> {{ r.job }}
       </div>
-      <div class="tag">
-        {{ r.category }}
-      </div>
+      <div class="tags">
+  <span class="tag-item" *ngFor="let c of r.category">
+    {{ c }}
+  </span>
+</div>
     </div>
   </div>
 
@@ -47,7 +56,7 @@
     <p>Fill in information below</p>
   </div>
 
-  <div class="modal-body">
+  < class="modal-body">
 
 
     <!-- Using grid layout for first and last name -->
@@ -74,30 +83,52 @@
     <select [(ngModel)]="form.job">
       <option value="" disabled selected>Select job field</option>
 
-      <option *ngFor="let j of jobFields" [value]="j">
+      <option *ngFor="let j of jobs" [value]="j">
         {{ j }}
       </option>
     </select>
 
-    <!-- Dropdown for behavior type -->
-    <div *ngFor="let b of behavior">
-  <label>
+    <!-- Dropdown for category -->
+<div class="category-wrapper" (click)="closeDropdownOutside($event)">
+
+  <!-- SELECTED TAGS -->
+  <div class="tags">
+    <span class="tag" *ngFor="let c of form.category">
+      {{ c }}
+      <button (click)="removeCategory(c)">×</button>
+    </span>
+
+    <!-- INPUT -->
     <input
-      type="checkbox"
-      [value]="b"
-      (change)="toggleBehavior(b, $event)"
+      type="text"
+      placeholder="Search category..."
+      [(ngModel)]="categoryInput"
+      (input)="onCategoryInput()"
+      (focus)="showDropdown = true"
+      (keydown.enter)="selectFirstCategory()"
     />
-    {{ b }}
-  </label>
-</div>
-
-    
-
   </div>
+
+  <!-- DROPDOWN -->
+  <div class="dropdown" *ngIf="showDropdown && filteredCategories.length > 0">
+    <div
+      class="item"
+      *ngFor="let c of filteredCategories"
+      (click)="addCategory(c)"
+    >
+      {{ c }}
+    </div>
+  </div>
+
+</div>
 
   <div class="modal-footer">
     <button class="cancel" (click)="closeForm()">Cancel</button>
     <button class="submit" (click)="submit()">Submit</button>
+  </div>
+
+  <div class="submit-message" *ngIf="searchMessage" [ngClass]="messageType">
+  {{ searchMessage }}
   </div>
 
 </div>

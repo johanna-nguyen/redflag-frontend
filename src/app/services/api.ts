@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class Api {
-  //private baseUrl = 'http://localhost:8080/api';
+  //private baseUrl = 'http://localhost:8080/api/reports';
 
   private baseUrl = 'https://redflag-backend-production.up.railway.app/api/reports';
 
